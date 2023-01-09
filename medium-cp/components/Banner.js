@@ -15,7 +15,7 @@ const Banner = () => {
           <h3 className='text-2xl'> Discover stories, thinking, and expertise from writers on any topic. </h3>
           <button className={styles.accentedButton}>Start Reading</button>
         </div>
-        <Image src={Logo.src} width={500} height={400} className='hidden h-96 md:inline-flex object-contain flex-1' />
+        <Image src={Logo.src} width={500} height={400} className='hidden h-96 md:inline-flex object-contain flex-1' alt='Banner' />
       </div>
     </div>
   )
