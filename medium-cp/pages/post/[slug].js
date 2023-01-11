@@ -1,17 +1,18 @@
-import ReadersNav from '../../components/ReadersNav'
-import Recommendation from '../../components/Recommendation'
+import ArticleMain from "../../components/ArticleMain";
+import ReadersNav from "../../components/ReadersNav";
+import Recommendation from "../../components/Recommendation";
 
 const Post = () => {
   const styles = {
     content: `flex`,
-  }
+  };
   return (
     <div className={styles.content}>
       <ReadersNav />
-      <div>Article Main Will Go Here</div>
+      <ArticleMain />
       <Recommendation />
     </div>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

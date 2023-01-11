@@ -1,6 +1,6 @@
-import Header from '../components/Header'
-import Banner from '../components/Banner'
-import PostCard from '../components/PostCard'
+import Header from "../components/Header";
+import Banner from "../components/Banner";
+import PostCard from "../components/PostCard";
 
 export default function Home() {
   const styles = {
@@ -8,7 +8,7 @@ export default function Home() {
     container: `max-w-7xl flex-1`,
     main: `flex justify-center`,
     wrapper: `mx-auto`,
-  }
+  };
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -23,5 +23,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }

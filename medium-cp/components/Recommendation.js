@@ -1,13 +1,13 @@
-import Image from 'next/image'
-import { AiOutlineSearch } from 'react-icons/ai'
-import { MdMarkEmailUnread } from 'react-icons/md'
-import ReplitLogo from '../static/replit.png'
-import TutorialImg from '../static/tutorial.jpg'
-import CPLogo from '../static/cp.png'
-import Qazi from '../static/qazi.jpg'
-import JSLogo from '../static/jsLogo.png'
+import Image from "next/image";
+import { AiOutlineSearch } from "react-icons/ai";
+import { MdMarkEmailUnread } from "react-icons/md";
+import ReplitLogo from "../static/replit.png";
+import TutorialImg from "../static/tutorial.jpg";
+import CPLogo from "../static/cp.png";
+import Qazi from "../static/qazi.jpg";
+import JSLogo from "../static/jsLogo.png";
 
-const Recommendation = () => {
+const Recommendation = ({ author }) => {
   const styles = {
     wrapper: `h-screen min-w-[10rem] max-w-[30rem] flex-[1.2] p-[2rem]`,
     accentedButton: `flex items-center justify-center text-sm bg-black text-white my-[2rem] py-[.6rem] rounded-full `,
@@ -22,44 +22,76 @@ const Recommendation = () => {
     recommendationAuthorProfileImageContainer: `rounded-full overflow-hidden h-[1.4rem] w-[1.4rem]`,
     recommendationAuthorName: `text-sm`,
     recommendationAuthorContainer: `flex items-center gap-[.6rem]`,
-  }
+    recommendationTitle: `font-bold`,
+    recommendationThumbnailContainer: `flex flex-1 items-center justify-center h-[4rem] w-[4rem]`,
+    recommendationThumbnail: `object-cover`,
+    articleContentWrapper: `flex items-center justify-between cursor-pointer my-[1rem]`,
+    articleContent: `flex-[4]`,
+  };
   return (
     <div className={styles.wrapper}>
-      <div className={styles.accentedButton}>
-        Get Unlimited Access
-      </div>
+      <div className={styles.accentedButton}>Get Unlimited Access</div>
       <div className={styles.searchBar}>
         <AiOutlineSearch />
-        <input className={styles.searchInput} placeholder='Search' type='text' />
+        <input
+          className={styles.searchInput}
+          placeholder="Search"
+          type="text"
+        />
       </div>
       <div className={styles.authorContainer}>
         <div className={styles.authorProfileImageContainer}>
-          <Image src={Qazi} width={100} height={100} />
+          <Image src={Qazi} width={100} height={100} alt="Author Name" />
         </div>
         <div className={styles.authorName}>Ashari Novaldi</div>
         <div className={styles.authorFollowing}>1M Followers</div>
         <div className={styles.authorActions}>
           <button className={styles.actionButton}>Follow</button>
-          <button className={styles.actionButton}> <MdMarkEmailUnread /> </button>
+          <button className={styles.actionButton}>
+            {" "}
+            <MdMarkEmailUnread />{" "}
+          </button>
         </div>
       </div>
       <div className={styles.recommendationContainer}>
-        <div className={styles.title}>
-          More from Medium
-        </div>
+        <div className={styles.title}>More from Medium</div>
         <div className={styles.articlesContainer}>
-          <div className={styles.recommendationAuthorContainer}>
-            <div className={styles.recommendationAuthorProfileImageContainer}>
-              <Image src={Qazi} height={400} width={100} />
+          <div className={styles.articleContentWrapper}>
+            <div className={styles.articleContent}>
+              <div className={styles.recommendationAuthorContainer}>
+                <div
+                  className={styles.recommendationAuthorProfileImageContainer}
+                >
+                  <Image
+                    src={Qazi}
+                    height={400}
+                    width={100}
+                    alt="Author Name"
+                  />
+                </div>
+                <div className={styles.recommendationAuthorName}>
+                  Ashari Novaldi
+                </div>
+              </div>
+              <div className={styles.recommendationTitle}>
+                The Ultimate JavaScript Course for Beginners by Clever
+                Programmer
+              </div>
             </div>
-            <div className={styles.recommendationAuthorName}>Ashari Novaldi</div>
-            <div className={styles.recommendationTitle}>The Ultimate JavaScript Course for Beginners by Clever Programmer</div>
+            <div className={styles.recommendationThumbnailContainer}>
+              <Image
+                className={styles.recommendationThumbnail}
+                src={JSLogo}
+                height={100}
+                width={100}
+                alt="Author Name"
+              />
+            </div>
           </div>
-          <Image src={JSLogo} height={100} width={100} />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Recommendation
+export default Recommendation;
