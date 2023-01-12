@@ -9,7 +9,7 @@ import JSLogo from "../static/jsLogo.png";
 
 const Recommendation = ({ author }) => {
   const styles = {
-    wrapper: `h-screen min-w-[10rem] max-w-[30rem] flex-[1.2] p-[2rem]`,
+    wrapper: `h-screen overflow-auto min-w-[10rem] max-w-[30rem] flex-[1.2] p-[2rem]`,
     accentedButton: `flex items-center justify-center text-sm bg-black text-white my-[2rem] py-[.6rem] rounded-full `,
     searchBar: `flex items-center gap-[.6rem] h-[2.6rem] border px-[1rem] rounded-full`,
     searchInput: `border-none outline-none bg-none w-full`,
@@ -56,38 +56,37 @@ const Recommendation = ({ author }) => {
       <div className={styles.recommendationContainer}>
         <div className={styles.title}>More from Medium</div>
         <div className={styles.articlesContainer}>
-          <div className={styles.articleContentWrapper}>
-            <div className={styles.articleContent}>
-              <div className={styles.recommendationAuthorContainer}>
-                <div
-                  className={styles.recommendationAuthorProfileImageContainer}
-                >
-                  <Image
-                    src={Qazi}
-                    height={400}
-                    width={100}
-                    alt="Author Name"
-                  />
+          {recommendedPost?.map((post, idx) => (
+            <div key={idx} className={styles.articleContentWrapper}>
+              <div className={styles.articleContent}>
+                <div className={styles.recommendationAuthorContainer}>
+                  <div
+                    className={styles.recommendationAuthorProfileImageContainer}
+                  >
+                    <Image
+                      src={post?.author?.image}
+                      height={400}
+                      width={100}
+                      alt={post?.author?.name}
+                    />
+                  </div>
+                  <div className={styles.recommendationAuthorName}>
+                    {post?.author?.name}
+                  </div>
                 </div>
-                <div className={styles.recommendationAuthorName}>
-                  Ashari Novaldi
-                </div>
+                <div className={styles.recommendationTitle}>{post?.title}</div>
               </div>
-              <div className={styles.recommendationTitle}>
-                The Ultimate JavaScript Course for Beginners by Clever
-                Programmer
+              <div className={styles.recommendationThumbnailContainer}>
+                <Image
+                  className={styles.recommendationThumbnail}
+                  src={post?.image}
+                  height={100}
+                  width={100}
+                  alt={post?.title}
+                />
               </div>
             </div>
-            <div className={styles.recommendationThumbnailContainer}>
-              <Image
-                className={styles.recommendationThumbnail}
-                src={JSLogo}
-                height={100}
-                width={100}
-                alt="Author Name"
-              />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
@@ -95,3 +94,30 @@ const Recommendation = ({ author }) => {
 };
 
 export default Recommendation;
+
+const recommendedPost = [
+  {
+    title: "What can you do with Replit?",
+    image: ReplitLogo,
+    author: {
+      name: "Clever Programmer",
+      image: CPLogo,
+    },
+  },
+  {
+    title: "The Ultimate Javascript Course for Beginners by Clever Programmer",
+    image: TutorialImg,
+    author: {
+      name: "Rafeh Qazi",
+      image: Qazi,
+    },
+  },
+  {
+    title: "How to Become a Developer in 2022?",
+    image: JSLogo,
+    author: {
+      name: "Clever Programmer",
+      image: CPLogo,
+    },
+  },
+];
